@@ -30,7 +30,6 @@ Entidad	Descripción	Propiedades
 		
 		
 		
-		
 
 Vistas
 		
