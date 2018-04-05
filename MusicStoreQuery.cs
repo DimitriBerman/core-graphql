@@ -5,7 +5,8 @@ namespace aspnetcoregraphql.Models
 {
     public class MusicStoreQuery : ObjectGraphType
     {
-        public MusicStoreQuery(ICategoryRepository categoryRepository, IProductRepository productRepository, IVenueRepository venueRepository)
+        public MusicStoreQuery(ICategoryRepository categoryRepository, IProductRepository productRepository, 
+                                IVenueRepository venueRepository, IMusicianRepository musicianRepository)
         {
             Field<CategoryType>(
                 "category",
@@ -34,6 +35,19 @@ namespace aspnetcoregraphql.Models
                     new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "Venue id" }
                 ),
                 resolve: context => venueRepository.GetAsync(context.GetArgument<int>("id")).Result
+            );
+
+            Field<ListGraphType<MusicianType>>(
+                "musicians",
+                resolve: context => musicianRepository.GetAllAsync().Result
+            );
+
+            Field<MusicianType>(
+                "musician",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "Musician id" }
+                ),
+                resolve: context => musicianRepository.GetAsync(context.GetArgument<int>("id")).Result
             );
         }
     }

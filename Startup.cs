@@ -31,15 +31,19 @@ namespace aspnetcoregraphql
 
             services.AddScoped<MusicStoreQuery>();   
             
+            // DB Repositories
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();   
             services.AddTransient<IVenueRepository, VenueRepository>();   
+            services.AddTransient<IMusicianRepository, MusicianRepository>();   
 
-            services.AddScoped<IDocumentExecuter, DocumentExecuter>();
-            
+            // GraphQl Types
             services.AddTransient<CategoryType>();
             services.AddTransient<ProductType>();
             services.AddTransient<VenueType>();
+            services.AddTransient<MusicianType>();
+
+            services.AddScoped<IDocumentExecuter, DocumentExecuter>();        
             
             var sp = services.BuildServiceProvider();
             
