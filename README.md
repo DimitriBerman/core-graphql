@@ -53,3 +53,39 @@ Vistas
 Sistemas
 Módulos
 Dispositivos y Plataformas
+
+
+Ejemplo GraphQl
+{ 
+ "query":
+  "query{
+     venues {
+     	name,
+		zone,
+     	email
+     },
+     venue(id:1){
+     	name,
+     	contactName
+     	email,
+     	description,
+     	technicalRider,
+     	address,
+     	notes
+     },
+     musicians {
+    	name,
+    	email,
+    	zone
+     },
+	musician(id:2){
+     	name,
+     	email,
+     	description,
+     	address,
+     	notes,
+     	genres,
+     	arrangement
+     },
+   }"
+}
