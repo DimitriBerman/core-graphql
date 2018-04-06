@@ -8,5 +8,6 @@ namespace aspnetcoregraphql.Data
     {
         Task<List<Venue>> GetAllAsync();
         Task<Venue> GetAsync(int id);
+        Task<Venue> AddAsync(Venue venue);
     }
 }

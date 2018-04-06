@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -51,6 +52,14 @@ namespace aspnetcoregraphql.Data
         public Task<List<Venue>> GetAllAsync()
         {
             return Task.FromResult(_venues);
+        }
+
+        public Task<Venue> AddAsync(Venue venue)
+        {
+            var random = new Random();
+            venue.Id = random.Next();
+            _venues.Add(venue);
+            return GetAsync(venue.Id);
         }
     }
 }
