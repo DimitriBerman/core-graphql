@@ -89,3 +89,18 @@ Ejemplo GraphQl
      },
    }"
 }
+
+
+2- Ejemplo con Variables de VenueID
+{ 
+	"query":"query($venueId: Int!) { 
+		venue(id: $venueId){ 
+			name,
+			contactName,
+			email
+		},
+	}",
+	"variables": "{
+		venueId: 2
+	}"
+}
