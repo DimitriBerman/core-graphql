@@ -29,7 +29,8 @@ namespace aspnetcoregraphql
         {
             services.AddMvc();
 
-            services.AddScoped<MusicStoreQuery>();   
+            services.AddScoped<MusicStoreQuery>();  
+            services.AddScoped<MusicStoreMutation>(); 
             
             // DB Repositories
             services.AddTransient<ICategoryRepository, CategoryRepository>();
@@ -42,6 +43,7 @@ namespace aspnetcoregraphql
             services.AddTransient<ProductType>();
             services.AddTransient<VenueType>();
             services.AddTransient<MusicianType>();
+            services.AddTransient<VenueInputType>();
 
             services.AddScoped<IDocumentExecuter, DocumentExecuter>();        
             

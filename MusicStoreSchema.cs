@@ -9,8 +9,7 @@ namespace aspnetcoregraphql.Models
             :base(resolveType)
         {
             Query = (MusicStoreQuery)resolveType(typeof(MusicStoreQuery));
-            //Mutation = (MusicStoreMutation)resolveType(typeof(MusicStoreMutation));
-            
+            Mutation = (MusicStoreMutation)resolveType(typeof(MusicStoreMutation));
         }
     }
 }

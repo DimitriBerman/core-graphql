@@ -3,7 +3,7 @@ using GraphQL.Types;
 
 namespace aspnetcoregraphql.Models
 {
-    public class MusicStoreMutation : ObjectGraphType
+    public class MusicStoreMutation : ObjectGraphType<object>
     {
         public MusicStoreMutation(IVenueRepository venueRepository) {
 
