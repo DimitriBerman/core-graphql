@@ -1,7 +1,7 @@
-using aspnetcoregraphql.Data;
+using MusicStore.Data;
 using GraphQL.Types;
 
-namespace aspnetcoregraphql.Models
+namespace MusicStore.Models
 {
     public class MusicianType : ObjectGraphType<Musician>
     {

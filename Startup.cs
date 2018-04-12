@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using aspnetcoregraphql.Data;
-using aspnetcoregraphql.Models;
+using MusicStore.Data;
+using MusicStore.Models;
 using GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
@@ -12,8 +12,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MusicStore.Data.EntityFramework;
+using Microsoft.EntityFrameworkCore;
+using StarWars.Data.EntityFramework.Seed;
 
-namespace aspnetcoregraphql
+namespace MusicStore
 {
     public class Startup
     {
@@ -38,6 +41,10 @@ namespace aspnetcoregraphql
             services.AddTransient<IVenueRepository, VenueRepository>();   
             services.AddTransient<IMusicianRepository, MusicianRepository>();   
 
+            services.AddDbContext<MusicStoreDbContext>(options =>
+                options.UseSqlServer(Configuration["ConnectionStrings:MusicStoreDatabaseConnection"])
+            );
+
             // GraphQl Types
             services.AddTransient<CategoryType>();
             services.AddTransient<ProductType>();
@@ -57,7 +64,7 @@ namespace aspnetcoregraphql
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, MusicStoreDbContext db)
         {
             if (env.IsDevelopment())
             {
@@ -65,6 +72,8 @@ namespace aspnetcoregraphql
             }
 
             app.UseMvc();
+
+            db.EnsureSeedData();
         }
     }
 }

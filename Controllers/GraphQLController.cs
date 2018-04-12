@@ -1,11 +1,11 @@
 using System;
 using System.Threading.Tasks;
-using aspnetcoregraphql.Models;
+using MusicStore.Models;
 using GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 
-namespace aspnetcoregraphql.Controllers
+namespace MusicStore.Controllers
 {
     [Route("graphql")]
     public class GraphQLController : Controller

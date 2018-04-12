@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using aspnetcoregraphql.Models;
+using MusicStore.Models;
 
-namespace aspnetcoregraphql.Data
+namespace MusicStore.Data
 {
     public class MusicianRepository : IMusicianRepository
     {

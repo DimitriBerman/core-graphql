@@ -1,8 +1,8 @@
 using System.Linq;
-using aspnetcoregraphql.Data;
+using MusicStore.Data;
 using GraphQL.Types;
 
-namespace aspnetcoregraphql.Models
+namespace MusicStore.Models
 {
     public class CategoryType : ObjectGraphType<Category>
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace aspnetcoregraphql.Models
+namespace MusicStore.Models
 {
     public class Category
     {

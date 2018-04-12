@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using aspnetcoregraphql.Models;
+using MusicStore.Models;
 
-namespace aspnetcoregraphql.Data
+namespace MusicStore.Data
 {
     public interface IVenueRepository
     {

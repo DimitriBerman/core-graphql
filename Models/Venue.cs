@@ -1,4 +1,4 @@
-namespace aspnetcoregraphql.Models
+namespace MusicStore.Models
 {
     public class Venue
     {
