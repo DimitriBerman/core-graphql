@@ -38,8 +38,8 @@ namespace MusicStore
             // DB Repositories
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();   
-            services.AddTransient<IVenueRepository, VenueRepository>();   
-            services.AddTransient<IMusicianRepository, MusicianRepository>();   
+            services.AddTransient<IVenueRepository, VenueEFRepository>();   
+            services.AddTransient<IMusicianRepository, MusicianEFRepository>();   
 
             services.AddDbContext<MusicStoreDbContext>(options =>
                 options.UseSqlServer(Configuration["ConnectionStrings:MusicStoreDatabaseConnection"])
@@ -51,6 +51,7 @@ namespace MusicStore
             services.AddTransient<VenueType>();
             services.AddTransient<MusicianType>();
             services.AddTransient<VenueInputType>();
+            services.AddTransient<MusicianInputType>();
 
             services.AddScoped<IDocumentExecuter, DocumentExecuter>();        
             

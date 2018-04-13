@@ -8,5 +8,6 @@ namespace MusicStore.Data
     {
         Task<List<Musician>> GetAllAsync();
         Task<Musician> GetAsync(int id);
+        Task<Musician> AddAsync(Musician musician);
     }
 }

@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MusicStore.Data
 {
-    public class VenueRepository : IVenueRepository
+    public class VenueEFRepository : IVenueRepository
     {
         private MusicStoreDbContext _db { get; set; }
 
-        public VenueRepository(MusicStoreDbContext db) { 
+        public VenueEFRepository(MusicStoreDbContext db) { 
             _db = db;
         }
 

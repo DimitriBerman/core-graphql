@@ -12,5 +12,6 @@ namespace MusicStore.Data.EntityFramework
         }
 
         public DbSet<Venue> Venues { get; set; }
+        public DbSet<Musician> Musicians { get; set; }
     }
 }

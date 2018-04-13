@@ -14,7 +14,6 @@ namespace StarWars.Data.EntityFramework.Seed
                 var venues = new List<Venue>{
                     new Venue()
                     {
-                        //Id = 1,
                         Name = "Eter Club",
                         Description = "Bar comodo y bien arreglado con un estilo moderno pero relajado.",
                         Notes = "@DimiSet toco el 30 de Marzo y el sonido estuvo aceptable. La Banda tocaba bien asunque el sonidista estuvo un poco flojo poruqe el Bajo no se escuchaba.",
@@ -28,7 +27,6 @@ namespace StarWars.Data.EntityFramework.Seed
                     },
                     new Venue()
                     {
-                        //Id = 2,
                         Name = "Sr Duncan",
                         Description = "Bar comodo y bien arreglado con un estilo moderno pero relajado.",
                         Notes = "@DimiSet toco el 3 de Marzo y el sonido muy lindo.",
@@ -42,6 +40,36 @@ namespace StarWars.Data.EntityFramework.Seed
                     }
                 };
                 db.Venues.AddRange(venues);
+                db.SaveChanges();
+            }
+
+            if(!db.Musicians.Any())
+            {
+                var musicians = new List<Musician>{
+                    new Musician()
+                    {
+                        Name = "Dimi",
+                        Description = "Compositor Cantante Productor Pianista",
+                        Notes = "@DimiSet core",
+                        Arrangement = "Paga Ra Prata",
+                        Address = "Av.Caseros 3183 dto 11",
+                        Email = "dimitriboccanera@gmail.com",
+                        Phone = "+54 9 11 3008-3674",
+                        Zone = "Parque Patricios - CABA"
+                    },
+                    new Musician()
+                    {
+                        Name = "Franco Donadio",
+                        Description = "Guitarrista de Jazz, Compositor  Productor de IDM",
+                        Notes = "Franco esta tocando en @Sexteto (referencia)",
+                        Arrangement = "Franco esta dispuesto a ser invitado a eventos segun su agenda. Tambien esta dispuesto a hacer eventos pagos.",
+                        Address = "Calle False 12345",
+                        Email = "francodonadio@gmail.COOK",
+                        Phone = "+54 11 1234-1234",
+                        Zone = "Villa Ortuzar"
+                    }
+                };
+                db.Musicians.AddRange(musicians);
                 db.SaveChanges();
             }
         }
