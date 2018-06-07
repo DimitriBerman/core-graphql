@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using MusicStore.Models;
+using MusicStore.GraphQL;
 using GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;

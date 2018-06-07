@@ -1,7 +1,7 @@
 using System;
 using GraphQL.Types;
 
-namespace MusicStore.Models
+namespace MusicStore.GraphQL
 {
     public class MusicStoreSchema : Schema
     {

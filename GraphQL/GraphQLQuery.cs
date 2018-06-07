@@ -1,4 +1,4 @@
-namespace MusicStore.Models
+namespace MusicStore.GraphQL
 {
     public class GraphQLQuery
     {

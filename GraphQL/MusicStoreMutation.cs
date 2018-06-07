@@ -1,7 +1,8 @@
 using MusicStore.Data;
+using MusicStore.Models;
 using GraphQL.Types;
 
-namespace MusicStore.Models
+namespace MusicStore.GraphQL
 {
     public class MusicStoreMutation : ObjectGraphType<object>
     {
