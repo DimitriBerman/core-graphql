@@ -18,7 +18,7 @@ Local
 1 – Como Local quiero tener un calendario en el cual abrir franjas horarias disponibles para fechas con la opción de mostrar la franja solo a Artistas de ciertos géneros musicales
 2 – Como Local quiero ver quienes solicitaron subscripción a cualquiera de mis franjas horarias y aceptar o declinar la subscripción
 3 – Como Local quiero poder charlar con el Artista dentro del contexto de la subscripción a una franja horaria y ofrecer modificaciones al arreglo
-4 -  Como Local quiero poder confirmar o descartar el arreglo con un Artista para una franja horaria especifica
+4 - Como Local quiero poder confirmar o descartar el arreglo con un Artista para una franja horaria especifica
 5 – Como local quiero poder invitar Artistas a ver mi calendario, algún día de mi calendario o a alguna franja horaria
 6 – Como Local quiero poder cargar y presentar de manera estéticamente adecuada mis datos en la aplicación: Nombre del Local, Staff, Descripción, Fotos, Videos, Labels, Datos de Contacto, Link a Website
 
