@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  music-store:
+    image: music-store
+    build:
+      context: .
+      dockerfile: dockerfile
