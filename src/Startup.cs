@@ -41,8 +41,11 @@ namespace MusicStore
             services.AddTransient<IVenueRepository, VenueEFRepository>();   
             services.AddTransient<IMusicianRepository, MusicianEFRepository>();   
 
-            services.AddDbContext<MusicStoreDbContext>(options =>
-                options.UseSqlServer(Configuration["ConnectionStrings:MusicStoreDatabaseConnection"])
+            services.AddDbContext<MusicStoreDbContext>(options => {
+                string connectionString = Configuration["ConnectionStrings:MusicStoreDatabaseConnection"];
+                Console.WriteLine(connectionString);
+                options.UseSqlServer(connectionString);
+            }
             );
 
             // GraphQl Types

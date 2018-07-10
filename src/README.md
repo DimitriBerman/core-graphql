@@ -1,6 +1,9 @@
 # core-graphql
 Simple implementation of GraphQl with net-core
 
+RUN:
+'docker-compose up'
+
 Definición del Problema / Necesidades
 
 Artistas precisan acceder a información de contacto y negocios de locales (bares, clubes de música, espacios culturales, etc..) con el objetivo de facilitar la programación y negociación de fechas.
