@@ -1,8 +1,17 @@
 version: '3'
 
 services:
+  music-store-sql:
+    image: microsoft/mssql-server-linux
+    environment:
+      - "ACCEPT_EULA=Y"
+      - "SA_PASSWORD=mssqlServer1433"
+    ports:
+      - "1433:1433"
   music-store:
     image: music-store
     build:
       context: .
       dockerfile: dockerfile
+    depends_on: 
+      -  music-store-sql

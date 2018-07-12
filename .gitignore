@@ -1,5 +1,12 @@
 .vscode/
+.vs/
 bin/
 obj/
 node_modules
 npm-debug.log
+*/.vscode/
+*/.vs/
+*/bin/
+*/obj/
+*/node_modules
+*/npm-debug.log
