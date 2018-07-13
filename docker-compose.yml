@@ -1,7 +1,9 @@
 version: "3"
 services:
-  web:
+  api:
     build: .
+    environment:
+      - DB_CONNECTION_STRING=Server=db;Database=music-store;User=sa;Password=mssqlServer1433;
     ports:
       - "8000:80"
     depends_on:

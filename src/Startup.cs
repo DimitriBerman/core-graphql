@@ -42,10 +42,8 @@ namespace MusicStore
             services.AddTransient<IMusicianRepository, MusicianEFRepository>();   
 
             services.AddDbContext<MusicStoreDbContext>(options => {
-                //string connectionString = Configuration["ConnectionStrings:MusicStoreDatabaseConnection"];
-                string connectionString = @"Server=db;Database=music-store;User=sa;Password=mssqlServer1433;";
-
-                Console.WriteLine(connectionString);
+                string connectionString = Configuration["DB_CONNECTION_STRING"];
+                Console.WriteLine("ConnectionString: {0}", connectionString);
                 options.UseSqlServer(connectionString);
             }
             );
