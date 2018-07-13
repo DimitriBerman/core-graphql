@@ -1,9 +1,10 @@
 version: "3"
+
 services:
   api:
     build: .
     environment:
-      - DB_CONNECTION_STRING=Server=db;Database=music-store;User=sa;Password=mssqlServer1433;
+      - DB_CONNECTION_STRING=Server=db;Database=music-store;User=sa;Password=ch0r1z0n!;
     ports:
       - "8000:80"
     depends_on:
@@ -12,6 +13,6 @@ services:
     image: microsoft/mssql-server-linux
     environment:
       - "ACCEPT_EULA=Y"
-      - "SA_PASSWORD=mssqlServer1433"
+      - "SA_PASSWORD=ch0r1z0n!"
     ports:
       - "1433:1433"
