@@ -1,4 +1,4 @@
-dockerignore
+.dockerignore
 .env
 .git
 .gitignore
@@ -8,5 +8,3 @@ docker-compose.yml
 docker-compose.*.yml
 */bin
 */obj
-*/.vs
-*/.vscode

@@ -1,18 +1,17 @@
-version: "3"
+version: '3.4'
 
 services:
-  api:
-    build: .
-    environment:
-      - DB_CONNECTION_STRING=Server=db;Database=music-store;User=sa;Password=ch0r1z0n!;
-    ports:
-      - "8000:80"
+  graphapi:
+    image: ${DOCKER_REGISTRY}graphapi
+    build:
+      context: .
+      dockerfile: GraphAPI/Dockerfile
+  musicstore:
+    image: ${DOCKER_REGISTRY}musicstore
+    build:
+      context: .
+      dockerfile: MusicStore/Dockerfile
     depends_on:
       - db
   db:
     image: microsoft/mssql-server-linux
-    environment:
-      - "ACCEPT_EULA=Y"
-      - "SA_PASSWORD=ch0r1z0n!"
-    ports:
-      - "1433:1433"

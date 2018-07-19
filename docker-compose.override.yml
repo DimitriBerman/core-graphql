@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  graphapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=44393
+    ports:
+      - "23195:80"
+      - "44393:443"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+  musicstore:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=44313
+      - DB_CONNECTION_STRING=Server=db;Database=music-store;User=sa;Password=ch0r1z0n!;
+    ports:
+      - "23196:80"
+      - "44313:443"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+  db:
+    environment:
+      - "ACCEPT_EULA=Y"
+      - "SA_PASSWORD=ch0r1z0n!"
+    ports:
+      - "1433:1433"

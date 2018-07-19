@@ -10,8 +10,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using MusicStore.Data.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using StarWars.Data.EntityFramework.Seed;
@@ -43,6 +41,7 @@ namespace MusicStore
 
             services.AddDbContext<MusicStoreDbContext>(options => {
                 string connectionString = Configuration["DB_CONNECTION_STRING"];
+                //string connectionString = "Server=db;Database=music-store;User=sa;Password=ch0r1z0n!";
                 Console.WriteLine("ConnectionString: {0}", connectionString);
                 options.UseSqlServer(connectionString);
             }
