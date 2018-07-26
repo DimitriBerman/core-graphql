@@ -3,16 +3,49 @@ version: "3"
 services:
   api:
     build: .
+    # container_name: music-store-api
     environment:
       - DB_CONNECTION_STRING=Server=db;Database=music-store;User=sa;Password=ch0r1z0n!;
+      - ELASTIC_SEARCH_URI=http://elasticsearch:9200
     ports:
-      - "8000:80"
+      - "8080:80"
     depends_on:
       - db
+    networks:
+      - docker-network
   db:
     image: microsoft/mssql-server-linux
+    # container_name: music-store-db
     environment:
       - "ACCEPT_EULA=Y"
       - "SA_PASSWORD=ch0r1z0n!"
     ports:
       - "1433:1433"
+    networks:
+      - docker-network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+    # container_name: music-store-elasticsearch
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - docker-network
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.2.4
+    # container_name: music-store-kibana
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    driver: bridge
+
+volumes:
+  elasticsearch-data:

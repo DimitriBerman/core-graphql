@@ -1,3 +1,14 @@
+
+# EntryPoints
+
+GraphQL-API: http://localhost:8080
+
+SQL: http://localhost:1433
+
+ElasticSearch: http://localhost:9200
+
+Kibana: http://localhost:5601
+
 # core-graphql
 Simple implementation of GraphQl with net-core
 

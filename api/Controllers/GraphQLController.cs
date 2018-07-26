@@ -4,6 +4,7 @@ using MusicStore.Models;
 using GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace MusicStore.Controllers
 {
@@ -12,16 +13,20 @@ namespace MusicStore.Controllers
     {
         private readonly IDocumentExecuter _documentExecuter;
         private readonly ISchema _schema;
+        ILogger<GraphQLController> _logger;
 
-        public GraphQLController(IDocumentExecuter documentExecuter,ISchema schema)
+        public GraphQLController(IDocumentExecuter documentExecuter,ISchema schema, ILogger<GraphQLController> logger)
         {
             _documentExecuter = documentExecuter;
             _schema = schema;
+            _logger = logger;
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]GraphQLQuery query)
         {
+            _logger.LogInformation($"[POST] at : {DateTime.UtcNow}");
+
             if (query == null) { throw new ArgumentNullException(nameof(query)); }
 
             var executionOptions = new ExecutionOptions { 

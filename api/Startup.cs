@@ -15,14 +15,34 @@ using Microsoft.Extensions.Options;
 using MusicStore.Data.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using StarWars.Data.EntityFramework.Seed;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Sinks.Elasticsearch;
 
 namespace MusicStore
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(hostingEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{hostingEnvironment.EnvironmentName}.json", reloadOnChange: true, optional: true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
+
+            var elasticUri = Configuration["ELASTIC_SEARCH_URI"];
+            Console.WriteLine("ElasticUri: {0}", elasticUri);
+
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
+                {
+                    AutoRegisterTemplate = true,
+                })
+            .CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
@@ -68,8 +88,10 @@ namespace MusicStore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, MusicStoreDbContext db)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, MusicStoreDbContext db, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddSerilog();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
