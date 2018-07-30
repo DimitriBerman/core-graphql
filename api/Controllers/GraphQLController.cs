@@ -31,7 +31,8 @@ namespace MusicStore.Controllers
 
             var executionOptions = new ExecutionOptions { 
                 Schema = _schema, 
-                Query = query.Query ,
+                Query = query.Query,
+                OperationName = query.OperationName,
                 Inputs = query.Variables.ToInputs()
             };
 

@@ -6,7 +6,6 @@ namespace MusicStore.Models
     public class MusicStoreMutation : ObjectGraphType<object>
     {
         public MusicStoreMutation(IVenueRepository venueRepository, IMusicianRepository musicianRepository) {
-
             Field<VenueType>(
                 "createVenue",
                 arguments: new QueryArguments(

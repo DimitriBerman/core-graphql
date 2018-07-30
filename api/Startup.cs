@@ -84,7 +84,8 @@ namespace MusicStore
             services.AddScoped<ISchema>(_ => 
                                             new MusicStoreSchema(type => 
                                                 (GraphType) sp.GetService(type)) {
-                                                    Query = sp.GetService<MusicStoreQuery>()
+                                                    Query = sp.GetService<MusicStoreQuery>(),
+                                                    Mutation = sp.GetService<MusicStoreMutation>()
                                                 });
         }
 
@@ -98,6 +99,7 @@ namespace MusicStore
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseGraphiQl();
             app.UseMvc();
 
             db.EnsureSeedData();
