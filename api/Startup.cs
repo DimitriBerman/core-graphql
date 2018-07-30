@@ -15,7 +15,7 @@ using Microsoft.Extensions.Options;
 using MusicStore.Data.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using StarWars.Data.EntityFramework.Seed;
-using Microsoft.Extensions.Logging;
+using Serilog.Exceptions;
 using Serilog;
 using Serilog.Sinks.Elasticsearch;
 
@@ -38,6 +38,7 @@ namespace MusicStore
 
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
+                .Enrich.WithExceptionDetails()
                 .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
                 {
                     AutoRegisterTemplate = true,

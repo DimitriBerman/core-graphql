@@ -25,7 +25,7 @@ namespace MusicStore.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]GraphQLQuery query)
         {
-            _logger.LogInformation($"[POST] at : {DateTime.UtcNow}");
+            _logger.LogInformation($"GraphQLQuery.POST at : {DateTime.UtcNow}", query);
 
             if (query == null) { throw new ArgumentNullException(nameof(query)); }
 
@@ -41,6 +41,7 @@ namespace MusicStore.Controllers
 
                 if (result.Errors?.Count > 0)
                 {
+                    _logger.LogError("GraphQLQuery.Post.Error > 0 (BadRequest)", result.Errors, query);
                     return BadRequest(result);
                 }
 
@@ -48,6 +49,7 @@ namespace MusicStore.Controllers
             }
             catch(Exception ex)
             {
+                 _logger.LogError(ex, "GraphQLQuery.Post.Catch (BadRequest)", query);
                 return BadRequest(ex);
             }
         }
